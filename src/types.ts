@@ -23,11 +23,11 @@ export interface HREmployee {
   role: string;
   regime: string;
   admissionDate: string;
-  asoStatus: "Válido" | "Vence em 15 dias" | "Vencido";
+  asoStatus: "Valid" | "Expires in 15 days" | "Expired";
   asoNextDate: string;
   specialCert: string;
   salary: number;
-  status: "Ativo" | "Afastado" | "Férias";
+  status: "Active" | "On Leave" | "Vacation";
   phone: string;
   accumulatedLowPerformanceYearly: number;
   lastResetYear: number;
@@ -41,7 +41,7 @@ export interface HREmployee {
 export interface Machine {
   id: string;
   name: string;
-  status: "Ociosa" | "Ocupada" | "Manutenção";
+  status: "Idle" | "Busy" | "Maintenance";
   currentOperatorId?: string;
   currentGranulometry?: string;
 }
@@ -64,7 +64,7 @@ export interface LogisticsOrder {
   driverFee: number;
   totalFreightCost: number;
   estimatedHours: number;
-  status: "Aguardando Despacho" | "Liberado por Cássio" | "Em Trânsito" | "Entregue";
+  status: "Awaiting Dispatch" | "Released by Cassio" | "In Transit" | "Delivered";
   driverName: string;
   driverPlate: string;
   carrierName: string;
@@ -76,13 +76,13 @@ export interface LogisticsOrder {
 export interface ExecutiveDecision {
   id: string;
   title: string;
-  domain: "Logística & Frete" | "RH & Leis" | "Finanças & Compras" | "Operações";
+  domain: "Logistics & Freight" | "HR & Labor Law" | "Finance & Procurement" | "Operations";
   supervisor: string;
-  severity: "Baixa" | "Média" | "Alta" | "Crítica";
+  severity: "Low" | "Medium" | "High" | "Critical";
   summary: string;
   details?: string;
   recommendedAction: string;
   financialImpact: number;
-  status: "Pendente" | "Aprovado" | "Rejeitado";
+  status: "Pending" | "Approved" | "Rejected";
   timestamp: string;
 }

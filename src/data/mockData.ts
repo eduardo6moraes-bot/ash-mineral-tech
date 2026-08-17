@@ -9,7 +9,7 @@ export const MOCK_B2B_CUSTOMERS: B2BCustomer[] = [
     address: "Distrito Industrial CINCO, Rua 12, 450",
     tel: "(31) 3399-8800",
     cnpj: "19.823.411/0001-92",
-    habitualProduct: "ASH Pure #325 Mesh (Micro-Quartzo 44µ)",
+    habitualProduct: "ASH Pure #325 Mesh (Micro-Quartz 44µ)",
     active: true
   },
   {
@@ -20,7 +20,7 @@ export const MOCK_B2B_CUSTOMERS: B2BCustomer[] = [
     address: "Av. das Indústrias, 1820 - Polo Petroquímico",
     tel: "(31) 3594-7722",
     cnpj: "24.118.905/0001-44",
-    habitualProduct: "Areia Sílica Filtrada #100 Mesh & Seca",
+    habitualProduct: "Filtered Silica Sand #100 Mesh & Dry",
     active: true
   },
   {
@@ -31,7 +31,7 @@ export const MOCK_B2B_CUSTOMERS: B2BCustomer[] = [
     address: "Anel Rodoviário Km 14, Olhos d'Água",
     tel: "(31) 3288-1500",
     cnpj: "33.402.781/0001-50",
-    habitualProduct: "ASH Pure Ultra-Fino #400 Mesh (Cargas Minerais)",
+    habitualProduct: "ASH Pure Ultra-Fine #400 Mesh (Mineral Fillers)",
     active: true
   }
 ];
@@ -40,7 +40,7 @@ export const MOCK_B2B_MATCHES: B2BMatch[] = [
   {
     customerName: "Tintas & Revestimentos Minas S.A.",
     score: 98,
-    reason: "Demanda imediata por 56t de ASH Pure #325 Mesh para linha de tintas automotivas. Estoque pronto em Ribeirão Vermelho.",
+    reason: "Immediate demand for 56t of ASH Pure #325 Mesh for automotive paint line. Stock ready at Ribeirão Vermelho.",
     contact: "(31) 3399-8800"
   }
 ];
@@ -49,14 +49,14 @@ export const MOCK_EMPLOYEES: HREmployee[] = [
   {
     id: "emp-1",
     name: "Alexandre Silva",
-    role: "Operador de Britador & Peneira",
-    regime: "CLT Integral",
+    role: "Crusher & Screen Operator",
+    regime: "Full-time CLT",
     admissionDate: "2024-03-15",
-    asoStatus: "Válido",
+    asoStatus: "Valid",
     asoNextDate: "2027-03-15",
     specialCert: "NR-11 & NR-12",
     salary: 3450,
-    status: "Ativo",
+    status: "Active",
     phone: "(35) 99812-4411",
     accumulatedLowPerformanceYearly: 0,
     lastResetYear: 2026,
@@ -68,14 +68,14 @@ export const MOCK_EMPLOYEES: HREmployee[] = [
   {
     id: "emp-2",
     name: "Francisco Oliveira",
-    role: "Operador de Moinho de Bolas",
-    regime: "CLT Integral",
+    role: "Ball Mill Operator",
+    regime: "Full-time CLT",
     admissionDate: "2023-08-10",
-    asoStatus: "Válido",
+    asoStatus: "Valid",
     asoNextDate: "2026-11-20",
     specialCert: "NR-22",
     salary: 3600,
-    status: "Ativo",
+    status: "Active",
     phone: "(35) 99933-2288",
     accumulatedLowPerformanceYearly: 0,
     lastResetYear: 2026,
@@ -89,15 +89,15 @@ export const MOCK_EMPLOYEES: HREmployee[] = [
 export const MOCK_MACHINES: Machine[] = [
   {
     id: "m1",
-    name: "Moinho de Bolas M1 (Ribeirão Vermelho)",
-    status: "Ocupada",
+    name: "Ball Mill M1 (Ribeirão Vermelho)",
+    status: "Busy",
     currentOperatorId: "emp-2",
     currentGranulometry: "ASH Pure #325 Mesh"
   },
   {
     id: "m2",
-    name: "Britador Cônico B2",
-    status: "Ocupada",
+    name: "Cone Crusher B2",
+    status: "Busy",
     currentOperatorId: "emp-1",
     currentGranulometry: "8-20 Mesh"
   }
@@ -113,7 +113,7 @@ export const MOCK_LOGISTICS_ORDERS: LogisticsOrder[] = [
     distanceKm: 210,
     tonnage: 28,
     granulometry: "ASH Pure #325 Mesh",
-    truckType: "Carreta LS (32t)",
+    truckType: "Semi-trailer LS (32t)",
     dieselLiters: 95.5,
     dieselPricePerLiter: 5.92,
     dieselCost: 565,
@@ -122,10 +122,10 @@ export const MOCK_LOGISTICS_ORDERS: LogisticsOrder[] = [
     driverFee: 388,
     totalFreightCost: 1376,
     estimatedHours: 3.2,
-    status: "Em Trânsito",
+    status: "In Transit",
     driverName: "Gustavo (Roma Transportes)",
     driverPlate: "ASH-9A28 (Scania R450)",
-    carrierName: "Roma Transportes & Logística Mineral",
+    carrierName: "Roma Transportes & Mineral Logistics",
     nfeEmitted: true,
     createdAt: new Date(Date.now() - 3600000 * 2).toISOString(),
     eta: "15:45"
@@ -135,14 +135,14 @@ export const MOCK_LOGISTICS_ORDERS: LogisticsOrder[] = [
 export const MOCK_EXECUTIVE_DECISIONS: ExecutiveDecision[] = [
   {
     id: "dec-01",
-    title: "Liberação de Despacho de Frete: Contagem (28t)",
-    domain: "Logística & Frete",
-    supervisor: "Supervisor de Frota (Eng. Gustavo)",
-    severity: "Média",
-    summary: "Ordem de frete #101 para Tintas & Revestimentos Minas S.A. aprovada com rota Fernão Dias e abastecimento otimizado.",
-    recommendedAction: "Despachar imediatamente com emissão de NF-e concomitante.",
+    title: "Freight Dispatch Release: Contagem (28t)",
+    domain: "Logistics & Freight",
+    supervisor: "Fleet Supervisor (Eng. Gustavo)",
+    severity: "Medium",
+    summary: "Freight order #101 for Tintas & Revestimentos Minas S.A. approved with Fernão Dias route and optimized refueling.",
+    recommendedAction: "Dispatch immediately with concurrent NF-e issuance.",
     financialImpact: 1376,
-    status: "Aprovado",
+    status: "Approved",
     timestamp: new Date(Date.now() - 7200000).toISOString()
   }
 ];

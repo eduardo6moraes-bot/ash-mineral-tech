@@ -1,56 +1,59 @@
-# ⚡ ASH Mineral Tech - Industrial AI OS & Multi-Agent Operations
+# ⚡ ASH Mineral Tech — Industrial AI OS & Multi-Agent Operations
 
-> **Plataforma Industrial Autônoma Multiagente com Gemini 2.0 Flash, Visão Computacional Multimodal e Telemetria em Tempo Real.**
+![ASH Mineral Tech Cover](./docs/cover.png)
+
+> **Autonomous Multi-Agent Industrial Platform powered by Gemini 2.0 Flash, Multimodal Computer Vision and Real-Time Telemetry.**
 >
-> *Submissão Oficial: Build with Gemini XPRIZE | Planta Piloto: Ribeirão Vermelho - MG*
+> *Official Submission: Build with Gemini XPRIZE | Pilot Plant: Ribeirão Vermelho – MG, Brazil*
 
 ---
 
-## 🎯 Visão Geral
+## 🎯 Overview
 
-O **ASH Mineral Tech** é um sistema operacional industrial de ponta a ponta projetado para governar e automatizar o beneficiamento mineral, a síntese de geopolímeros e a distribuição B2B de sílica pura e micro-quartzo (#100, #200, #325 Mesh e frações ultrafinas).
+**ASH Mineral Tech** is an end-to-end industrial operating system designed to govern and automate mineral processing, geopolymer synthesis, and B2B distribution of pure silica and micro-quartz (#100, #200, #325 Mesh and ultrafine fractions).
 
-
+```
 ┌────────────────────────────────────────┐
-│ ASH MINERAL TECH OS │
-│ (Project IDX / React 18 / Tailwind) │
+│         ASH MINERAL TECH OS            │
+│     (Project IDX / React 18 / Tailwind)│
 └───────────────────┬────────────────────┘
-│
-▼
+                    │
+                    ▼
 ┌────────────────────────────────────────┐
-│ CAMADA 3: EXECUTIVA │
-│ Cássio Executivo (Gemini 2.0) │
-│ - Decisão Estratégica & DRE / Margem │
+│           LAYER 3: EXECUTIVE           │
+│     Cassio Executive (Gemini 2.0)      │
+│  - Strategic Decisions & Margin / P&L  │
 └───────────────────▲────────────────────┘
-│
-┌───────────────────────┴───────────────────────┐
-│ │
-┌──────────────┴──────────────┐ ┌──────────────┴──────────────┐
-│ CAMADA 2: SUPERVISORES │ │ CAMADA 1: MULTIMODAL │
-│ - Dra. Cecília (RH / NRs) │ │ - Gemini Vision Mesh Audit │
-│ - Eng. Gustavo (Logística) │ │ - OCR de NF-e & Romaneios │
-│ - Auditor Marcelo (DRE) │ │ - Charles Ops Chatbot │
-└──────────────▲──────────────┘ └──────────────▲──────────────┘
-│ │
-└───────────────────────┬───────────────────────┘
-│
+                    │
+      ┌─────────────┴─────────────┐
+      │                           │
+┌─────┴──────────────┐   ┌────────┴─────────────┐
+│  LAYER 2: SUPERVISORS │   │ LAYER 1: MULTIMODAL │
+│ - Dr. Cecilia (HR / NRs)│   │ - Gemini Vision Mesh Audit │
+│ - Eng. Gustavo (Logistics)│ │ - Invoice & Packing List OCR │
+│ - Auditor Marcelo (P&L) │   │ - Charles Ops Chatbot │
+└──────▲─────────────┘   └────────▲─────────────┘
+       │                          │
+       └────────────┬─────────────┘
+                    │
 ┌───────────────────┴────────────────────┐
-│ GATEWAY AUTÔNOMO SPARK │
-│ REST / Telemetria em Tempo Real │
-│ (Moinhos / Britadores / Estoque) │
+│         AUTONOMOUS SPARK GATEWAY       │
+│     REST / Real-Time Telemetry         │
+│   (Mills / Crushers / Inventory)       │
 └────────────────────────────────────────┘
+```
 
 ---
 
-## 🧠 Destaques de Arquitetura de IA
+## 🧠 AI Architecture Highlights
 
-- **Auditoria Granulométrica Multimodal**: Endpoint `/api/vision/inspect-mesh` processando imagens microscópicas de amostras via Gemini 2.0 Flash Vision para certificar a malha #325 Mesh antes do despacho
-- **Raciocínio Executivo Estruturado**: Cássio Executivo operando com `responseSchema` nativo do SDK `@google/genai` eliminando alucinações em deliberações financeiras e operacionais
-- **Gateway SPARK**: Telemetria contínua de sensores de vibração, corrente e moagem em tempo real
+- **Multimodal Mesh Audit**: Endpoint `/api/vision/inspect-mesh` processes microscopic sample images via Gemini 2.0 Flash Vision to certify #325 Mesh before dispatch.
+- **Structured Executive Reasoning**: Cassio Executive uses native `responseSchema` from the `@google/genai` SDK, eliminating hallucinations in financial and operational deliberations.
+- **SPARK Gateway**: Continuous real-time telemetry from vibration, current and grinding sensors.
 
 ---
 
-## 🚀 Como Executar Localmente
+## 🚀 Local Setup
 
 ```bash
 git clone https://github.com/eduardo6moraes-bot/ash-mineral-tech.git
@@ -60,6 +63,6 @@ cp .env.example .env
 npm run dev
 ```
 
-Acesse em http://localhost:3000
+Open http://localhost:3000
 
-Desenvolvido com Google AI Studio, Gemini 2.0 Flash e Project IDX para o Build with Gemini XPRIZE.
+Built with Google AI Studio, Gemini 2.0 Flash and Project IDX for the Build with Gemini XPRIZE.
