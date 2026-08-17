@@ -1,89 +1,125 @@
-# ⚡ ASH Mineral Tech - Industrial AI OS & Multi-Agent Operations
+# ASH Mineral Tech
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-ash--mineral--tech.ai.studio-00C853?style=for-the-badge&logo=google)](https://ash-mineral-tech.ai.studio)
-[![XPRIZE Submission](https://img.shields.io/badge/XPRIZE-Build%20with%20Gemini-4285F4?style=for-the-badge)](https://devpost.com/software/ash-mineral-tech)
-[![AI Core](https://img.shields.io/badge/AI%20Core-Gemini%202.0%20Flash-9C27B0?style=for-the-badge)](https://ai.google.dev)
-[![Google Cloud](https://img.shields.io/badge/Cloud-Google%20AI%20Studio-EA4335?style=for-the-badge&logo=googlecloud)](https://aistudio.google.com)
-[![TypeScript](https://img.shields.io/badge/Language-TypeScript-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
+## AI-native industrial operations from demand to delivery
 
-> **Plataforma Industrial Autônoma Multiagente com Gemini 2.0 Flash, Inspeção Granulométrica Multimodal e Telemetria em Tempo Real**
->
-> 🌐 **Ambiente de Produção Ativo:** [https://ash-mineral-tech.ai.studio](https://ash-mineral-tech.ai.studio)
-> 🏆 **Submissão Oficial:** Build with Gemini XPRIZE Edition
-> 🏭 **Planta Piloto:** Ribeirão Vermelho - MG (Eixo Fernão Dias / Polo B2B Minas-SP)
+ASH Mineral Tech is an industrial intelligence cockpit for mineral processing and B2B operations. It connects customer demand, OCR order intake, raw-material inventory, factory machines, finished-product allocation, fleet execution, finance, people operations and executive decisions in one auditable workflow.
 
----
+> **Showcase mode:** this repository includes a clearly labeled synthetic scenario for demos. Showcase values are not a copy of confidential customer, employee, payroll or contract data. Replace them only with authorized data when running a private deployment.
 
-## 🎯 Visão Geral da Arquitetura
+## Why it matters
 
-O **ASH Mineral Tech** é um sistema operacional industrial de ponta a ponta que automatiza o beneficiamento mineral, a síntese de geopolímeros sustentáveis e a distribuição B2B de sílica de alta pureza (#100, #200, #325 Mesh e frações ultrafinas de 44 micra)
+Industrial teams usually have the same information split between customer messages, production logs, spreadsheets, dispatch calls, finance workbooks and HR documents. ASH turns that fragmentation into a decision loop:
 
+```text
+B2B demand → OCR / structured order → stock allocation → machine traceability
+        → freight and route → cost and margin → supervisor signals → Cassio executive decision
+```
 
-┌────────────────────────────────────────┐
-│ ASH MINERAL TECH OS │
-│ (React 18 / Tailwind / Project IDX) │
-└───────────────────┬────────────────────┘
-│
-▼
-┌────────────────────────────────────────┐
-│ CAMADA 3: EXECUTIVA │
-│ Cássio Executivo (Gemini 2.0) │
-│ - Decisão Estratégica & DRE / Margem │
-│ - Structured Outputs (responseSchema) │
-└───────────────────▲────────────────────┘
-│
-┌───────────────────────┴───────────────────────┐
-│ │
-┌──────────────┴──────────────┐ ┌──────────────┴──────────────┐
-│ CAMADA 2: SUPERVISORES │ │ CAMADA 1: MULTIMODAL │
-│ - Dra. Cecília (RH / NRs) │ │ - Gemini Vision Mesh Audit │
-│ - Eng. Gustavo (Logística) │ │ - OCR de NF-e & Romaneios │
-│ - Auditor Marcelo (DRE) │ │ - Charles Ops Chatbot │
-└──────────────▲──────────────┘ └──────────────▲──────────────┘
-│ │
-└───────────────────────┬───────────────────────┘
-│
-┌───────────────────┴────────────────────┐
-│ GATEWAY AUTÔNOMO SPARK │
-│ REST / Telemetria em Tempo Real │
-│ (Moinhos / Britadores / Estoque) │
-└────────────────────────────────────────┘
+The public showcase follows a 67 t B2B order. It demonstrates 84 t of free stock, 67 t allocated stock, a 17 t safety buffer, a gross-revenue-to-net-margin view, factory telemetry, a GPS-style driver journey and a structured Cassio recommendation. All showcase figures are synthetic and intentionally visible as demo data.
 
----
+## Product surface
 
-## 🧠 Destaques de Engenharia de IA
+| Surface | What it demonstrates |
+| --- | --- |
+| Orders & OCR | Converts a B2B request into customer, product, tonnage and delivery context. |
+| Factory Floor | Links operators, machines, granulometry, tonnage and traceability events. |
+| Fleet & Freight | Exposes route, fuel, tolls, vehicle constraints, delivery ETA and driver mode. |
+| Ready Products | Separates free stock from allocated stock and shows inventory value by granulometry. |
+| Finance & DRE | Makes gross revenue, production cost, freight cost and net margin visible together. |
+| People & Compliance | Presents employee self-service, policy, safety and performance signals without exposing private records. |
+| B2B Matchmaking | Connects customer demand to available product, price and operational constraints. |
+| Cassio Executive | Orchestrates domain signals into a structured recommendation with risk and approval fields. |
+| Charles | Provides an operational copilot for stock, production, safety and dispatch questions. |
 
-* **Auditoria Granulométrica Multimodal (`POST /api/vision/inspect-mesh`):** O modelo Gemini 2.0 Flash Vision analisa amostras microscópicas de minério para verificar a uniformidade da malha (#325 Mesh / 44 micra) e presença de impurezas antes do despacho
-* **Cássio Executivo com Saída Estruturada (`POST /api/cassio/evaluate`):** Deliberação estratégica executada com `responseSchema` estrito via SDK `@google/genai`, eliminando alucinações em cálculos de custo de frete, margem por tonelada e balanço estequiométrico
-* **Gateway Autônomo SPARK (`POST /api/spark/telemetry`):** Endpoints REST para captura contínua de vibração, corrente elétrica e produtividade dos moinhos de bolas e britadores
-* **Charles Copilot Operacional (`POST /api/chat/charles`):** Assistente conversacional em tempo real para operadores de pátio sobre procedimentos técnicos e normas regulamentadoras (NR-11, NR-12, NR-22)
+## Multi-agent architecture
 
----
+ASH follows a layered operating model rather than treating the LLM as a single chat box.
 
-## 🛡️ Segurança & Arquitetura Dual-Mode
+| Layer | Agent role | Example decision |
+| --- | --- | --- |
+| Specialist workers | Machine, inventory, fleet, finance and people signals | Detect a stock shortfall or route constraint. |
+| Domain supervisors | Summarize evidence for a functional area | Confirm whether a dispatch is safe and within cost target. |
+| Cassio Executive | Cross-domain orchestration | Approve, reject or escalate an order based on risk and margin. |
 
-O repositório e o ambiente de demonstração foram projetados com isolamento total de segredos industriais:
-* **`VITE_DEMO_MODE=true`**: Carrega dados industriais sintéticos de alta fidelidade sem exigir credenciais privadas de banco de dados
-* **Segurança de Chaves**: A `GEMINI_API_KEY` roda exclusivamente no backend Express/Node.js, nunca exposta ao cliente
-* **Dataset Blindado**: Nomes de clientes, contratos e rotas foram anonimizados para a demonstração pública
+The server keeps the Gemini key on the backend. The frontend calls application endpoints and never needs to expose `GEMINI_API_KEY` in browser code.
 
----
+## Run locally
 
-## 🚀 Execução Local Rápida
+### Requirements
+
+Node.js 20 or newer and npm are recommended. The application can run in showcase mode without a Gemini key; the assistant buttons then use deterministic demo fallbacks. Add a key only for private testing of the Gemini-backed endpoints.
 
 ```bash
-git clone https://github.com/eduardo6moraes-bot/ash-mineral-tech.git
-cd ash-mineral-tech
 npm install
-cp .env.example .env
 npm run dev
 ```
 
-Acesse a aplicação local em http://localhost:3000
+Open `http://localhost:3000`.
 
-## 🛠️ Stack Tecnológica
+For a production-style build:
 
-* **IA & LLMs**: `@google/genai` (Gemini 2.0 Flash com Structured Outputs & Multimodal Vision)
-* **Frontend**: React 18, TypeScript, Tailwind CSS, Motion, Lucide Icons
-* **Backend**: Node.js, Express, Vite Server Middleware, esbuild
-* **Ambiente de Desenvolvimento**: Google AI Studio, Project IDX, Google Cloud
+```bash
+npm run lint
+npm run build
+npm start
+```
+
+The build creates the Vite frontend in `dist/` and bundles the Express server as `dist/server.cjs`.
+
+### Environment variables
+
+Create a local `.env` file only when needed. Do not commit it.
+
+```bash
+GEMINI_API_KEY=your_key_here
+PORT=3000
+```
+
+`GEMINI_API_KEY` is read server-side. The showcase remains usable when it is absent, which makes the repository safe to review and easy to reproduce.
+
+## API surface
+
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| `POST` | `/api/cassio/evaluate` | Returns a structured executive recommendation with risk and approval fields. |
+| `POST` | `/api/chat/charles` | Answers operational questions with Charles. |
+| `POST` | `/api/vision/inspect-mesh` | Inspects a mineral sample and returns a structured mesh audit. |
+| `GET` | `/api/spark/status` | Reports the telemetry gateway status and supported protocols. |
+| `POST` | `/api/spark/telemetry` | Accepts machine and production telemetry for alignment with inventory. |
+
+All AI routes validate responses as JSON at the server boundary. The UI gracefully falls back to a synthetic response when the AI endpoint is not configured or is unavailable.
+
+## Suggested demo path
+
+For a two-and-a-half-minute submission video, use one coherent order journey instead of showing every menu. Start with the 67 t B2B demand, show its allocation across free and reserved stock, move to the machine traceability screen, calculate the freight route, open the financial view and finish by asking Cassio to evaluate the decision. Use the People & Compliance and B2B Matchmaking screens as short supporting cuts if time allows.
+
+The public video should use anonymized customers and employees. Keep real proposals, payroll records, contract values and proprietary formulations outside this repository unless they are explicitly approved for publication.
+
+## Validation
+
+The repository is intentionally checked with the same commands a reviewer can run:
+
+```bash
+npm run lint   # TypeScript validation
+npm run build  # Frontend + Express production build
+```
+
+## Project structure
+
+```text
+.
+├── index.html              # Vite entry point
+├── src/
+│   ├── App.tsx             # Showcase cockpit and workflow views
+│   ├── data/mockData.ts    # Existing domain mock objects
+│   ├── types.ts            # Shared domain types
+│   ├── main.tsx            # React entry point
+│   └── index.css           # Industrial control-room visual system
+├── server.ts               # Express + Gemini endpoints
+├── vite.config.ts          # Vite, React and Tailwind v4 configuration
+└── package.json            # Reproducible scripts and dependencies
+```
+
+## Responsible demo disclosure
+
+A production deployment should connect to authenticated data sources, enforce role-based access, log decisions, and apply retention controls for employee and customer records. The public showcase deliberately avoids real personal, payroll and contractual information. The application demonstrates a decision-support workflow; final operational, financial, safety and employment actions remain subject to the responsible human team.
